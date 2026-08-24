@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/dborclpdb</property>
+        <property name="connection.username">hr</property>
+        <property name="connection.password">hr</property>
+
+        <!-- Oracle Dialect -->
+        <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+
+        <!-- Show SQL in console -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- Auto DDL: create / update / create-drop -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Teacher class mapping -->
+        <mapping class="org.example.Teacher"/>
+
+    </session-factory>
+
+</hibernate-configuration>
