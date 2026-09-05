@@ -1,0 +1,11 @@
+
+
+SELECT s.NAME AS student_name, c.TITLE AS course_name
+FROM STUDENT_COURSE sc
+JOIN STUDENTS s ON sc.STUDENT_ID = s.id
+JOIN COURSES c ON sc.COURSE_ID = c.id
+WHERE s.NAME = 'Ahmed'
+ORDER BY c.TITLE;
+
+
+SELECT * FROM COURSES WHERE TITLE = 'Art';
