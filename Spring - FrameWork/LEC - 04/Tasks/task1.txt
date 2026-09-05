@@ -1,0 +1,14 @@
+with hibernate please create connection 
+    (session and session-factory) and do the following 
+
+create Entity Player
+id      primary key
+name    not Null
+age     maxlength   10
+status   boolean
+--------------------------------------------
+save object with any data
+update object
+delete object 
+get object with id
+--------------------------------------------
