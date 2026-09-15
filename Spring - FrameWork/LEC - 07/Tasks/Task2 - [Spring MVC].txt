@@ -1,0 +1,15 @@
+Task 2 – Spring MVC
+
+Create a Spring MVC application for an Item model.
+Requirements
+
+Implement the following operations:
+1 - Add Item
+2 - Delete Item
+3 - Show All Items
+4 - Update Item
+5 - Show Item By ID
+
+ Task Link
+Task 2 – Spring MVC
+[   https://github.com/EslamKhder/spring-framework/blob/main/lec7/spring-boot-911-mvc/tasks.txt?utm_source=chatgpt.com   ]

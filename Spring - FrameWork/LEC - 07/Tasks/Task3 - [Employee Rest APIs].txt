@@ -1,0 +1,40 @@
+Task 3 – Employee REST APIs 
+
+Create an Employee table/model with:
+- id
+- name
+- age
+- phoneNumber
+
+Requirements
+Implement APIs for:
+1- Get All Employees
+2- Get Employees By List of IDs
+3- Save Employee
+4- Save List of Employees
+5- Update Employee
+6- Update List of Employees
+7- Delete All Employees
+8- Delete Employee By ID
+9- Delete Employees By List of IDs
+10- Search Employee By Name
+
+For the name search, implement the search using:
+- Function Name / Derived Query
+- Native Query
+- Non-Native Query / JPQL
+
+Example:
+ahmed%
+
+Task Link
+Task 3 – Employee REST APIs
+[   https://github.com/EslamKhder/spring-framework/blob/main/lec7/tasks/task1.txt?utm_source=chatgpt.com   ]
+
+General Requirements
+- Use Spring Boot.
+- Implement all required APIs/operations.
+- Make sure the application runs correctly.
+- Test your APIs using Postman or any suitable API testing tool.
+- The implementation does not have to be identical to the instructor's solution.
+- Different correct approaches are accepted as long as the required Concept + Behavior + Requirements are implemented.
