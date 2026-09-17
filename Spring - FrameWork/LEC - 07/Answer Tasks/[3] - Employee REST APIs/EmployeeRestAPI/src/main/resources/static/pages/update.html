@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="page-container">
+    <h1>Update Employee</h1>
+
+    <div class="load-section">
+        <div class="form-group">
+            <label for="loadId">Employee ID</label>
+            <input type="number" id="loadId" required>
+        </div>
+        <button id="loadBtn" class="submit-btn secondary-btn">Load Employee</button>
+    </div>
+
+    <form id="updateEmployeeForm" class="employee-form" style="display: none;">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" required>
+        </div>
+        <button type="submit" class="submit-btn">Update</button>
+    </form>
+
+    <p id="resultMessage" class="result-message"></p>
+
+    <a href="menu.html" class="back-link">← Back to Menu</a>
+</div>
+
+<script src="../js/update.js"></script>
+</body>
+</html>

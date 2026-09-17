@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Employees</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="page-container">
+    <h1>All Employees</h1>
+
+    <table class="employee-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+        </tbody>
+    </table>
+
+    <p id="emptyMessage" class="empty-message" style="display: none;">No employees found.</p>
+
+    <div class="pagination-controls">
+        <button id="prevBtn">← Previous</button>
+        <span id="pageInfo">Page 1 of 1</span>
+        <button id="nextBtn">Next →</button>
+    </div>
+
+    <a href="menu.html" class="back-link">← Back to Menu</a>
+</div>
+
+<script src="../js/view-all.js"></script>
+</body>
+</html>
