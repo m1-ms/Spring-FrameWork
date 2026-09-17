@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="scoreboard-bar">
+    <a href="index.html" class="back-link">← Back</a>
+    <h1 class="page-title">Update Player</h1>
+</div>
+
+<main class="page">
+
+    <!-- Players List -->
+    <div id="pickSection"></div>
+
+    <!-- Edit Panel -->
+    <div class="panel" id="editPanel" style="display: none;">
+
+        <form id="editForm">
+
+            <div class="error-text" id="errorMsg" style="display: none;"></div>
+
+            <div class="field">
+                <label for="name">Player Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="field">
+                <label for="age">Age</label>
+                <input type="number" id="age" min="1" required>
+            </div>
+
+            <div class="field">
+                <label for="team">Team</label>
+                <input type="text" id="team" required>
+            </div>
+
+            <button type="submit" class="btn btn-edit">
+                Save Changes
+            </button>
+
+        </form>
+
+        <!-- Success Message -->
+        <div class="state-box" id="successBox" style="display: none;">
+
+            <div class="state-icon">✔</div>
+
+            <p class="msg">
+                Player updated successfully
+            </p>
+
+            <div class="btn-row">
+
+                <a href="index.html" class="btn btn-ghost">
+                    Back
+                </a>
+
+                <a href="players-list.html" class="btn btn-edit">
+                    Players List
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // ==============================
+        // Elements
+        // ==============================
+
+        const params = new URLSearchParams(window.location.search);
+        const playerId = params.get('id');
+
+        const pickSection = document.getElementById('pickSection');
+        const editPanel = document.getElementById('editPanel');
+        const editForm = document.getElementById('editForm');
+        const successBox = document.getElementById('successBox');
+        const errorMsg = document.getElementById('errorMsg');
+
+        const nameInput = document.getElementById('name');
+        const ageInput = document.getElementById('age');
+        const teamInput = document.getElementById('team');
+
+
+        // ==============================
+        // Start Page
+        // ==============================
+
+        if (playerId) {
+
+            loadPlayerIntoForm(playerId);
+
+        } else {
+
+            loadPlayerPickList();
+
+        }
+
+
+        // ==============================
+        // Load Player By ID
+        // ==============================
+
+        async function loadPlayerIntoForm(id) {
+
+            try {
+
+                const response = await fetch('/api/players/' + id);
+
+                if (!response.ok) {
+                    throw new Error('Player not found');
+                }
+
+                const player = await response.json();
+
+                // Fill form
+                nameInput.value = player.name;
+                ageInput.value = player.age;
+                teamInput.value = player.team;
+
+                // Show edit panel
+                editPanel.style.display = 'block';
+
+            } catch (error) {
+
+                console.error('Error loading player:', error);
+
+                editPanel.style.display = 'block';
+
+                errorMsg.textContent = 'Could not load player.';
+                errorMsg.style.display = 'block';
+
+            }
+
+        }
+
+
+        // ==============================
+        // Load All Players
+        // ==============================
+
+        async function loadPlayerPickList() {
+
+            try {
+
+                const response = await fetch('/api/players');
+
+                if (!response.ok) {
+                    throw new Error('Could not load players');
+                }
+
+                const players = await response.json();
+
+                if (players.length === 0) {
+
+                    pickSection.innerHTML =
+                        '<p class="empty-state">No players available to update.</p>';
+
+                    return;
+                }
+
+
+                pickSection.innerHTML = `
+                <div class="data-list">
+
+                    ${players.map(player => `
+
+                        <a
+                            href="update-player.html?id=${player.id}"
+                            class="data-row"
+                        >
+
+                            <div class="row-info">
+
+                                <div class="row-name">
+
+                                    <span class="num">
+                                        #${player.id}
+                                    </span>
+
+                                    ${player.name}
+
+                                </div>
+
+                                <div class="row-meta">
+                                    ${player.age} yrs · ${player.team}
+                                </div>
+
+                            </div>
+
+                            <span class="row-chevron">
+                                ›
+                            </span>
+
+                        </a>
+
+                    `).join('')}
+
+                </div>
+            `;
+
+            } catch (error) {
+
+                console.error('Error loading players:', error);
+
+                pickSection.innerHTML =
+                    '<p class="empty-state">Could not load players.</p>';
+
+            }
+
+        }
+
+
+        // ==============================
+        // Update Player
+        // ==============================
+
+        editForm.addEventListener('submit', async function (e) {
+
+            e.preventDefault();
+
+            errorMsg.style.display = 'none';
+
+
+            const updatedPlayer = {
+
+                name: nameInput.value.trim(),
+
+                age: parseInt(ageInput.value),
+
+                team: teamInput.value.trim()
+
+            };
+
+
+            try {
+
+                const response = await fetch(
+                    '/api/players/' + playerId,
+                    {
+                        method: 'PUT',
+
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+
+                        body: JSON.stringify(updatedPlayer)
+                    }
+                );
+
+
+                if (response.ok) {
+
+                    editForm.style.display = 'none';
+
+                    successBox.style.display = 'block';
+
+                } else if (response.status === 404) {
+
+                    errorMsg.textContent =
+                        'Player not found.';
+
+                    errorMsg.style.display = 'block';
+
+                } else {
+
+                    errorMsg.textContent =
+                        'Something went wrong, please try again.';
+
+                    errorMsg.style.display = 'block';
+
+                }
+
+            } catch (error) {
+
+                console.error('Error updating player:', error);
+
+                errorMsg.textContent =
+                    'Could not reach the server.';
+
+                errorMsg.style.display = 'block';
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scoreboard-bar">
+    <a href="index.html" class="back-link">← Back</a>
+    <h1 class="page-title">Add Player</h1>
+</div>
+
+<main class="page">
+    <div class="panel panel--gold">
+        <form id="playerForm">
+            <div class="error-text" id="errorMsg" style="display:none;"></div>
+
+            <div class="field">
+                <label for="name">Player Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="field">
+                <label for="age">Age</label>
+                <input type="number" id="age" required min="1">
+            </div>
+            <div class="field">
+                <label for="team">Team</label>
+                <input type="text" id="team" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+        <div class="state-box" id="successBox" style="display:none;">
+            <div class="state-icon">✔</div>
+            <p class="msg">Player registered successfully</p>
+            <div class="btn-row">
+                <a href="index.html" class="btn btn-ghost">Back</a>
+                <a href="players-list.html" class="btn btn-edit">Players List</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const form = document.getElementById('playerForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorMsg.style.display = 'none';
+
+        const player = {
+            name: document.getElementById('name').value,
+            age: parseInt(document.getElementById('age').value),
+            team: document.getElementById('team').value
+        };
+
+        try {
+            const response = await fetch('/api/players', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(player)
+            });
+
+            if (response.ok) {
+                form.style.display = 'none';
+                document.getElementById('successBox').style.display = 'block';
+            } else {
+                errorMsg.textContent = 'Something went wrong, please try again';
+                errorMsg.style.display = 'block';
+            }
+        } catch (err) {
+            errorMsg.textContent = 'Could not reach the server';
+            errorMsg.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>

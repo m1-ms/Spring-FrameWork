@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Player Registry</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ==============================
+           Home Page
+        ============================== */
+
+        .page--wide {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .menu-intro {
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 35px;
+        }
+
+
+        /* ==============================
+           Cards Container
+        ============================== */
+
+        .home-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 18px;
+
+            width: 100%;
+        }
+
+
+        /* ==============================
+           Cards
+        ============================== */
+
+        .block-tile {
+
+            width: 220px;
+            height: 180px;
+
+            padding: 25px;
+
+            box-sizing: border-box;
+
+            border-radius: 16px;
+
+            text-decoration: none;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            flex-shrink: 0;
+
+            transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+
+        }
+
+
+        .block-tile:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                    0 15px 30px rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        /* ==============================
+           Icons
+        ============================== */
+
+        .block-tile .icon {
+
+            font-size: 42px;
+
+            line-height: 1;
+
+        }
+
+
+        /* ==============================
+           Titles
+        ============================== */
+
+        .block-tile .title {
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .block-tile .sub {
+
+            font-size: 14px;
+
+            line-height: 1.4;
+
+            opacity: 0.9;
+
+        }
+
+
+        /* ==============================
+           Colors
+        ============================== */
+
+        .block-add {
+
+            background: #35f58a;
+
+            color: #06140d;
+
+        }
+
+
+        .block-view {
+
+            background: #36d4ee;
+
+            color: #061218;
+
+        }
+
+
+        .block-update {
+
+            background: #f52d9b;
+
+            color: white;
+
+        }
+
+
+        .block-delete {
+
+            background: #ff4968;
+
+            color: white;
+
+        }
+
+
+        /* ==============================
+           Responsive
+        ============================== */
+
+        @media (max-width: 1000px) {
+
+            .home-grid {
+
+                flex-wrap: wrap;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .block-tile {
+
+                width: 90%;
+                max-width: 320px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     Header
+============================== -->
+
+<div class="scoreboard-bar">
+
+    <h1 class="page-title">
+        🏆 Player Registry
+    </h1>
+
+</div>
+
+
+<!-- ==============================
+     Main
+============================== -->
+
+<main class="page page--wide">
+
+
+    <p class="menu-intro">
+        Choose an action to continue
+    </p>
+
+
+    <!-- ==============================
+         Action Cards
+    ============================== -->
+
+    <div class="home-grid">
+
+
+        <!-- Add Player -->
+
+        <a href="Add-Player.html"
+           class="block-tile block-add">
+
+            <div class="icon">
+                ➕
+            </div>
+
+            <div>
+
+                <div class="title">
+                    Add Player
+                </div>
+
+                <div class="sub">
+                    Register a new player
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- View All -->
+
+        <a href="players-list.html"
+           class="block-tile block-view">
+
+            <div class="icon">
+                📋
+            </div>
+
+            <div>
+
+                <div class="title">
+                    View All
+                </div>
+
+                <div class="sub">
+                    Full roster with details
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- Update Player -->
+
+        <a href="update-player.html"
+           class="block-tile block-update">
+
+            <div class="icon">
+                ✏️
+            </div>
+
+            <div>
+
+                <div class="title">
+                    Update Player
+                </div>
+
+                <div class="sub">
+                    Edit an existing player
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- Delete Player -->
+
+        <a href="delete-player.html"
+           class="block-tile block-delete">
+
+            <div class="icon">
+                🗑️
+            </div>
+
+            <div>
+
+                <div class="title">
+                    Delete Player
+                </div>
+
+                <div class="sub">
+                    Remove a player
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

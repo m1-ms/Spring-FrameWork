@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Players</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scoreboard-bar">
+    <a href="index.html" class="back-link">← Back</a>
+    <h1 class="page-title">All Players</h1>
+</div>
+
+<main class="page page--wide">
+    <div id="playersContainer"></div>
+</main>
+
+<script>
+    async function loadPlayers() {
+        const container = document.getElementById('playersContainer');
+
+        try {
+            const response = await fetch('/api/players');
+            const players = await response.json();
+
+            if (players.length === 0) {
+                container.innerHTML = '<p class="empty-state">No players registered yet.</p>';
+                return;
+            }
+
+            container.innerHTML = '<div class="data-list">' + players.map(p => `
+                <div class="data-row">
+                    <div class="row-info">
+                        <div class="row-name"><span class="num">#${p.id}</span>${p.name}</div>
+                        <div class="row-meta">${p.age} yrs · ${p.team}</div>
+                    </div>
+                    <div class="row-actions">
+                        <a href="update-player.html?id=${p.id}" class="row-action row-action-edit">Edit</a>
+                        <a href="delete-player.html?id=${p.id}" class="row-action row-action-delete">Delete</a>
+                    </div>
+                </div>
+            `).join('') + '</div>';
+
+        } catch (err) {
+            container.innerHTML = '<p class="empty-state">Could not load players.</p>';
+        }
+    }
+
+    loadPlayers();
+</script>
+
+</body>
+</html>
