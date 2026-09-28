@@ -1,0 +1,219 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  background: #F5F3EE;
+  color: #1F1D1A;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2DED4;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.base-url {
+  font-size: 13px;
+  color: #7A7568;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  padding: 24px 32px;
+  align-items: start;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E2DED4;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.col-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card h2 {
+  margin: 0 0 14px 0;
+  font-size: 15px;
+}
+
+form label {
+  display: block;
+  font-size: 12px;
+  color: #7A7568;
+  margin-bottom: 4px;
+}
+
+form input, form select {
+  width: 100%;
+  border: 1px solid #D8D3C6;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  background: #2A6F6F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: none;
+  color: #1F1D1A;
+  border: 1px solid #D8D3C6;
+}
+
+button.danger {
+  background: none;
+  color: #B4483A;
+  border: 1px solid #C97C6B;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+button.edit {
+  background: none;
+  color: #1F1D1A;
+  border: 1px solid #D8D3C6;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hidden { display: none; }
+
+.error {
+  color: #B4483A;
+  font-size: 12px;
+  margin-bottom: 8px;
+  min-height: 14px;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.list-header button {
+  padding: 6px 12px;
+}
+
+.user-card {
+  border: 1px solid #E2DED4;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.user-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-card-head .meta {
+  color: #7A7568;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.user-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.posts-list {
+  margin-top: 10px;
+  padding-left: 12px;
+  border-left: 2px solid #EDEAE1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4A473F;
+}
+
+.post-row .path {
+  color: #A5A090;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.empty {
+  color: #A5A090;
+  font-size: 13px;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 29, 26, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 24px;
+  width: 320px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+
+.modal-message {
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.danger-solid {
+  background: #B4483A;
+  color: #FFFFFF;
+}

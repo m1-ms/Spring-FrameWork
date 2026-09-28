@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Post API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">User Post API</div>
+</header>
+
+<main class="layout">
+
+  <section class="col-forms">
+
+    <form id="userForm" class="card">
+      <h2 id="userFormTitle">Add User</h2>
+      <input type="hidden" id="userId">
+
+      <label for="uname">Name</label>
+      <input type="text" id="uname" placeholder="Mahmoud123" required>
+
+      <label for="uage">Age</label>
+      <input type="number" id="uage" placeholder="20" required>
+
+      <label for="upass">Password</label>
+      <input type="password" id="upass" placeholder="Passw0rd!" required>
+
+      <div id="userError" class="error"></div>
+
+      <div class="form-actions">
+        <button type="submit" id="userSubmitBtn">Create User</button>
+        <button type="button" id="userCancelBtn" class="secondary hidden">Cancel</button>
+      </div>
+    </form>
+
+    <form id="postForm" class="card">
+      <h2 id="postFormTitle">Add Post</h2>
+      <input type="hidden" id="postId">
+
+      <label for="ptext">Text (min 20 chars)</label>
+      <input type="text" id="ptext" placeholder="A post with enough length..." required>
+
+      <label for="ppath">Image path</label>
+      <input type="text" id="ppath" placeholder="/img/1.png">
+
+      <label for="puser">User</label>
+      <select id="puser" required></select>
+
+      <div id="postError" class="error"></div>
+
+      <div class="form-actions">
+        <button type="submit" id="postSubmitBtn">Create Post</button>
+        <button type="button" id="postCancelBtn" class="secondary hidden">Cancel</button>
+      </div>
+    </form>
+
+  </section>
+
+  <section class="col-list card">
+    <div class="list-header">
+      <h2>Users &amp; their Posts</h2>
+      <button type="button" id="refreshBtn" class="secondary">Refresh</button>
+    </div>
+    <div id="usersList"></div>
+  </section>
+
+</main>
+
+<div id="confirmModal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div id="confirmMessage" class="modal-message"></div>
+    <div class="modal-actions">
+      <button type="button" id="confirmOkBtn" class="danger-solid">Delete</button>
+      <button type="button" id="confirmCancelBtn" class="secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
