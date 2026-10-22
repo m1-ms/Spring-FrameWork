@@ -1,0 +1,19 @@
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+--------------------
+<dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.2.Final</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.5.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+$2a$12$hoZjiEr8M347ncYxTRV5gO1fJVnCfAWQS5TW9Zb2DczJ/irvg97Wy
